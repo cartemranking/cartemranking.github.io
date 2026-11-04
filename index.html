@@ -66,7 +66,7 @@ function render(q) {
   q = (q || '').trim().replace(/^#/, '');
   const shown = videos.filter(v => !q || String(v.no) === q ||
     v.title.includes(q) || v.items.some(it => it.name.includes(q)));
-  if (!shown.length) { list.innerHTML = '<p class="empty">찾는 영상이 없어요</p>'; return; }
+  if (!shown.length) { list.innerHTML = `<p class="empty">${videos.length ? '찾는 영상이 없어요' : '곧 첫 영상이 올라와요'}</p>`; return; }
   list.innerHTML = shown.map(v => `
     <section class="ep" id="${v.no}">
       <div class="ephead"><span class="no">#${v.no}</span><h2>${esc(v.title)}</h2><time>${esc(v.date)}</time></div>
